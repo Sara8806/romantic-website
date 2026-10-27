@@ -1,0 +1,493 @@
+
+/* General settings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  background: #211328;
+  color: #352548;
+  overflow-x: hidden;
+}
+
+.page {
+  position: relative;
+  min-height: 100vh;
+  padding: 35px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Main card */
+
+.love-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 480px;
+  min-height: 0;
+  padding: 25px 20px;
+  border: 5px solid #352548;
+  border-radius: 35px;
+  background: #ffebe8;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  overflow: hidden;
+}
+
+
+/* Decorative bunting */
+.bunting {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.bunting span {
+  width: 42px;
+  height: 62px;
+  margin: 0 2px;
+  padding-top: 10px;
+  background: #ff82ab;
+  border: 2px solid #352548;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  font-size: 15px;
+  color: white;
+  animation: sway 2s ease-in-out infinite alternate;
+}
+
+.bunting span:nth-child(even) {
+  background: #c9a6df;
+  animation-delay: -1s;
+}
+
+/* Main title */
+
+.main-title {
+  margin-top: 25px;
+  margin-bottom: 15px;
+  font-size: 3.2rem;
+  font-weight: 1000;
+  line-height: 0.95;
+  letter-spacing: -2px;
+  color: #352548;
+  text-shadow: 3px 4px 0 #352548;
+  -webkit-text-stroke: 1px #352548;
+  animation: pop-in 1s ease both;
+}
+
+.main-title span {
+  display: block;
+}
+
+.main-title .pink-text {
+  color: #ff5488;
+  font-size: 1em;
+}
+
+
+/* Forever banner */
+.forever {
+  padding: 13px 22px;
+  margin: 0 0 30px;
+  border: 3px solid #352548;
+  border-radius: 50px;
+  background: #ff8fb5;
+  font-size: clamp(16px, 4vw, 21px);
+  font-weight: bold;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Teddy bear area */
+
+.bear-circle {
+  width: 220px;
+  height: 220px;
+  min-width: 220px;
+  min-height: 220px;
+  position: relative;
+  border: 5px solid #352548;
+  border-radius: 50%;
+  background: #d9eff2;
+  box-shadow: 0 0 0 7px white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: float 3s ease-in-out infinite;
+}
+
+
+
+.teddy {
+  font-size: 115px;
+  line-height: 1;
+  filter: drop-shadow(2px 5px 1px #b3a2cb);
+  animation: teddy-bounce 2.5s ease-in-out infinite;
+}
+
+
+.bear-heart {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 60px;
+  animation: pulse 1.5s infinite;
+}
+
+.speech-heart {
+  position: absolute;
+  top: 10px;
+  right: -20px;
+  z-index: 2;
+  padding: 10px;
+  border: 3px solid #352548;
+  border-radius: 15px;
+  background: #ffb3cb;
+  font-size: 25px;
+  animation: pulse 1.5s infinite;
+}
+
+.name-tag {
+  z-index: 3;
+  margin-top: 15px;
+  padding: 12px 30px;
+  border: 4px solid #352548;
+  border-radius: 50px;
+  background: white;
+  color: #c2184b;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+/* Click button */
+
+.open-button {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 13px 24px;
+  border: 4px solid #352548;
+  border-radius: 50px;
+  background: #ed0735;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 5px 0 #352548;
+  transition: transform 0.2s, background 0.2s;
+  animation: pulse 2s infinite;
+}
+
+
+.open-button:hover {
+  background: #ff4e85;
+  transform: translateY(-5px) scale(1.03);
+}
+
+.open-button:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #352548;
+}
+
+.small-note {
+  margin-top: 24px;
+  color: #9e6382;
+  font-size: 15px;
+}
+
+/* Balloons */
+.balloon {
+  position: absolute;
+  top: 18%;
+  z-index: 1;
+  width: 65px;
+  height: 82px;
+  display: grid;
+  place-items: center;
+  border: 3px solid #352548;
+  border-radius: 50% 50% 45% 45%;
+  background: #ff83aa;
+  color: #fff;
+  font-size: 25px;
+  box-shadow: inset -7px -5px 0 #ed6593;
+  animation: balloon-float 4s ease-in-out infinite;
+}
+
+.balloon::after {
+  content: "";
+  position: absolute;
+  top: 78px;
+  left: 30px;
+  width: 1px;
+  height: 75px;
+  background: #352548;
+}
+
+.balloon-left {
+  left: 5%;
+  transform: scale(0.75);
+}
+
+.balloon-right {
+  right: 5%;
+  top: 25%;
+  background: #c6a4e6;
+  box-shadow: inset -7px -5px 0 #a184cc;
+  animation-delay: -2s;
+}
+
+/* Floating hearts */
+.floating-hearts {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.floating-hearts span {
+  position: absolute;
+  bottom: -50px;
+  left: 10%;
+  color: #ff6398;
+  font-size: 25px;
+  animation: rise 8s linear infinite;
+}
+
+.floating-hearts span:nth-child(2) {
+  left: 25%;
+  animation-delay: 2s;
+  font-size: 35px;
+}
+
+.floating-hearts span:nth-child(3) {
+  left: 45%;
+  animation-delay: 4s;
+}
+
+.floating-hearts span:nth-child(4) {
+  left: 65%;
+  animation-delay: 1s;
+  font-size: 32px;
+}
+
+.floating-hearts span:nth-child(5) {
+  left: 82%;
+  animation-delay: 3s;
+}
+
+.floating-hearts span:nth-child(6) {
+  left: 92%;
+  animation-delay: 5s;
+}
+
+/* Sparkles */
+.sparkle {
+  position: absolute;
+  color: #ff9aba;
+  font-size: 30px;
+  animation: twinkle 1.5s ease-in-out infinite alternate;
+}
+
+.sparkle-one {
+  top: 20%;
+  left: 5%;
+}
+
+.sparkle-two {
+  right: 7%;
+  bottom: 20%;
+  animation-delay: 0.8s;
+}
+
+/* Letter popup: CSS only */
+.letter-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(28, 15, 35, 0.88);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.4s, visibility 0.4s;
+}
+
+.letter-overlay:target {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.letter-box {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 35px 25px;
+  border: 5px solid #352548;
+  border-radius: 30px;
+  background: #ffebe8;
+  text-align: center;
+  box-shadow: 0 0 0 8px #ff9aba;
+  transform: translateY(25px) scale(0.9);
+  transition: transform 0.4s;
+}
+
+.letter-overlay:target .letter-box {
+  transform: translateY(0) scale(1);
+}
+
+.close-letter {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  color: #352548;
+  font-size: 35px;
+  text-decoration: none;
+}
+
+.letter-icon {
+  margin-bottom: 15px;
+  font-size: 55px;
+  animation: pulse 1.5s infinite;
+}
+
+.letter-box h2 {
+  margin-bottom: 20px;
+  color: #d81b60;
+  font-size: 27px;
+}
+
+.letter-box p {
+  color: #49344e;
+  font-size: 18px;
+  line-height: 1.9;
+  white-space: pre-line;
+}
+
+.letter-signature {
+  margin: 20px 0;
+  color: #d81b60;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.back-button {
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 30px;
+  background: #ed477d;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes teddy-bounce {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg) scale(1.04); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+@keyframes pop-in {
+  from { opacity: 0; transform: scale(0.7); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes sway {
+  from { transform: rotate(-5deg); }
+  to { transform: rotate(5deg); }
+}
+
+@keyframes balloon-float {
+  0%, 100% { margin-top: 0; }
+  50% { margin-top: -22px; }
+}
+
+@keyframes rise {
+  0% { transform: translateY(0) rotate(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-110vh) rotate(35deg); opacity: 0; }
+}
+
+@keyframes twinkle {
+  from { opacity: 0.4; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1.2); }
+}
+
+/* Mobile adjustments */
+@media (max-width: 400px) {
+  .page {
+    padding: 15px 8px;
+  }
+
+  .love-card {
+    min-height: 0;
+  padding: 25px 12px;
+    border-radius: 32px;
+  }
+
+  .main-title {
+    margin-top: 35px;
+  }
+
+  .forever {
+    padding: 11px 15px;
+  }
+
+  .open-button {
+    padding: 17px 24px;
+    font-size: 21px;
+  }
+
+  .balloon {
+    transform: scale(0.65);
+  }
+
+  .balloon-left {
+    left: -8px;
+  }
+
+  .balloon-right {
+    right: -8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
